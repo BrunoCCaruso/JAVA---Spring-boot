@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/head :: head"></head>
+<body>
+
+<header th:replace="fragments/header :: header"></header>
+
+<h1>LISTA DE ALUMNOS</h1>
+<main>
+    <div class="container">
+        <div class="row mt-5">
+            <div class="col">
+                <div class="table-responsive">
+                    <div class="table-responsive">
+                        <table class="table table-hover table-bordered table-dark">
+                            <thead>
+                            <tr>
+                                <th>Id</th>
+                                <th>Nombre</th>
+                                <th>Apellido</th>
+                                <th>Fecha de nacimiento</th>
+                                <th>Kyu</th>
+                                <th>Editar</th>
+                                <th>Eliminar</th>
+                            </tr>
+                            </thead>
+
+                            <tbody>
+                            <tr th:each="identificador : ${alumnos}">
+                                <td th:text="${identificador.id}"></td>
+                                <td th:text="${identificador.nombre}"></td>
+                                <td th:text="${identificador.apellido}"></td>
+                                <td th:text="${identificador.nacimiento}"></td>
+                                <td th:text="${identificador.kyu}"></td>
+                                <td><a class="btn btn-warning" th:href="@{/alumns/form/__${identificador.id}__}">Actualizar</a></td>
+                                <td><a class="btn btn-danger" >Eliminar</a></td>
+                            </tr>
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</main>
+<script th:src="@{/js/bootstrap.bundle.min.js}"></script>
+</body>
+</html>
